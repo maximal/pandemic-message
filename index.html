@@ -57,6 +57,8 @@
 	of&nbsp;<a href="https://sijeko.ru">Sijeko</a>
 	2020
 	<span class="middot-divider">&middot;</span>
+	фраз всего: <span id="total-phrases">1</span>
+	<span class="middot-divider">&middot;</span>
 	<a href="https://github.com/maximal/pandemic-message">GitHub</a>
 </div>
 
@@ -89,9 +91,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	const divResult = document.getElementById('result');
 	const btnRun = document.getElementById('run');
+	const divTotal = document.getElementById('total-phrases');
 
 	btnRun.addEventListener('click', run);
 	run();
+	calc();
 
 	function run() {
 		let res = [];
@@ -100,6 +104,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	function getRandomInt(min, max) {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+	function calc() {
+		let total = 1;
+		phrases.forEach(line => { total *= line.length; });
+		divTotal.innerText = total;
 	}
 });
 </script>
