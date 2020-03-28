@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>Важное сообщение</title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+	<style type="text/css">
+		h1 {
+			text-align: center;
+		}
+		.btn-run {
+			margin: 1rem 0;
+		}
+
+		footer {
+			border-top: 1px solid rgba(0, 0, 0, 0.25);
+			text-align: center;
+			margin-top: 2rem;
+			padding: 1rem;
+			opacity: 0.5;
+		}
+		.middot-divider {
+			margin: 0 0.5rem;
+		}
+	</style>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h1>Важное сообщение</h1>
+		</div>
+	</div>
+	<div class="row text-center">
+		<div class="col text-center"><button class="btn btn-primary btn-run" id="run">Ещё раз</button></div>
+	</div>
+	<div class="row">
+		<div class="col-md"></div>
+		<div class="col-md lead" id="result"></div>
+		<div class="col-md"></div>
+	</div>
+</div>
+
+</div>
+
+<footer>
+	©
+	<a href="https://maximals.ru">MaximAL</a>
+	of&nbsp;<a href="https://sijeko.ru">Sijeko</a>
+	2020
+	<span class="middot-divider">&middot;</span>
+	<a href="https://github.com/maximal/pandemic-message">GitHub</a>
+</div>
+
+
+<!-- Скрипты
+     ======= -->
+
+<!-- Поехали! -->
+<script type="text/javascript">
+
+// Ванилла
+document.addEventListener('DOMContentLoaded', function() {
+
+	// Жёсткий, мужицкий стрикт
+	'use strict';
+
+	// Поехали!
+	const phrases = [
+		['ВНИМАНИЕ!', 'СРОЧНО!', 'Всем привет!', 'Уважаемые родители!'],
+		['мне', 'соседу', 'мужу на работе', 'сестре в лаборатории'],
+		['позвонил', 'сказал', 'написал', 'прислал телеграмму'],
+		['знакомый из министерства', 'знакомый из очага эпидемии', 'брат', 'дядя', 'родственник «оттуда»', 'муж брата'],
+		['и попросил', 'и сильно попросил', 'и очень сильно попросил'],
+		['никому не говорить!!', 'всем рассказать!!'],
+		['на самом деле, всё', 'им достоверно известно, что всё'],
+		['лучше,', 'гораздо лучше,', 'хуже,', 'гораздо хуже,', 'совсем не так,'],
+		['и скоро', 'и совсем скоро', 'в скором времени'],
+		['мы все умрём.', 'всё будет хорошо.'],
+	];
+
+	const divResult = document.getElementById('result');
+	const btnRun = document.getElementById('run');
+
+	btnRun.addEventListener('click', run);
+	run();
+
+	function run() {
+		let res = [];
+		phrases.forEach(line => { res.push(line[getRandomInt(0, line.length - 1)]); });
+		divResult.innerText = res.join(' ');
+	}
+	function getRandomInt(min, max) {
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+});
+</script>
+
+</body>
+</html>
